@@ -1,5 +1,39 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## What’s Implemented
+
+- **Static Site Generation (SSG) Products Page:**  
+  `/ssg` route fetches and displays a list of products at build time using SSG.
+- **Server-Side Rendering (SSR) Users Page:**  
+  `/ssr` route fetches and displays a list of users on every request using SSR.
+- **API Fetching:**  
+  Uses `fetch` to retrieve data from external APIs for both products and users.
+- **Styling:**  
+  Uses Tailwind CSS utility classes for modern UI styling.
+- **Font Optimization:**  
+  Uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to load [Geist](https://vercel.com/font).
+- **Testing:**  
+  Includes unit tests for both SSG and SSR pages with mocked API responses.
+
+### Test Coverage
+
+- Renders lists of products and users from mocked API data.
+- Handles empty API responses gracefully (renders no items).
+- Verifies correct API endpoint and fetch options are used.
+- Checks that UI updates correctly for different API responses.
+
+### Lighthouse Reports
+
+Lighthouse performance reports for both SSR and SSG implementations are included below:
+
+#### SSR Lighthouse Report
+
+![SSR Lighthouse Report](./public/ssr-lighthouse-report.png)
+
+#### SSG Lighthouse Report
+
+![SSG Lighthouse Report](./public/ssg-lighthouse-report.png)
+
 ## Getting Started
 
 First, run the development server:
