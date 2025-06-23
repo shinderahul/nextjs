@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import UsersPage from "../app/ssr/page";
 
 // Mock fetch globally
@@ -21,5 +21,15 @@ describe("UsersPage SSR (App Router)", () => {
         expect(userItems).toHaveLength(2);
         expect(userItems[0]).toHaveTextContent("Alice");
         expect(userItems[1]).toHaveTextContent("Bob");
+    });
+
+    it("renders no users when API returns empty array", async () => {
+        (global.fetch as jest.Mock).mockResolvedValueOnce({
+            json: () => Promise.resolve([]),
+        });
+        const ui = await UsersPage();
+        render(ui);
+
+        expect(screen.queryAllByTestId("user-item")).toHaveLength(0);
     });
 });
