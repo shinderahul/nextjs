@@ -4,11 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Loader from "@/components/common/loader";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
-const ChartComponent = dynamic(() => import("@/components/chartComponent/"), {
+const ChartComponent = dynamic(() => import("@/components/chartComponent"), {
   ssr: false,
-  loading: () => <Loader />,
 });
 
 export default function Home() {
@@ -43,7 +42,9 @@ export default function Home() {
 
         <div className="flex flex-col items-center justify-center w-full">
           {showMore ? (
-            <ChartComponent />
+            <Suspense fallback={<Loader />}>
+              <ChartComponent />
+            </Suspense>
           ) : (
             <button
               className="mt-4 px-4 py-2 text-black cursor-pointer rounded bg-gray-200 hover:bg-gray-300 transition"
@@ -59,6 +60,7 @@ export default function Home() {
         <Link
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="/about"
+          prefetch
         >
           <Image
             aria-hidden
@@ -71,9 +73,8 @@ export default function Home() {
         </Link>
         <Link
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/contact"
+          prefetch
         >
           <Image
             aria-hidden
