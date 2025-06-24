@@ -28,11 +28,51 @@ Lighthouse performance reports for both SSR and SSG implementations are included
 
 #### SSR Lighthouse Report
 
-![SSR Lighthouse Report](./public/ssr-lighthouse-report.png)
+![SSR Lighthouse Report](./public/ssr-lighhouse-report.png)
 
 #### SSG Lighthouse Report
 
-![SSG Lighthouse Report](./public/ssg-lighthouse-report.png)
+![SSG Lighthouse Report](./public/ssg-lighhouse-report.png)
+
+## Code Splitting
+
+🔍 What is Code Splitting?
+
+Code splitting is a performance optimization technique that breaks your JavaScript bundle into smaller pieces, allowing the browser to load only the necessary code when needed. This reduces initial load time and improves user experience, especially in large applications.
+
+📦 Types of Code Splitting Implemented
+
+✅ Route-based Splitting
+Each route (page) is lazy-loaded using the framework's routing system. For example, in Next.js, this happens automatically for pages inside the app or pages directory.
+
+✅ Component-based Splitting
+Heavy components or rarely used ones are split using React.lazy() or next/dynamic().
+
+// Example using React.lazy
+
+```bash
+const About = React.lazy(() => import('@/components/About'));
+```
+
+// Example using Next.js dynamic import
+
+```bash
+import dynamic from 'next/dynamic';
+const Chart = dynamic(() => import('@/components/Chart'));
+```
+
+🧪 Webpack Bundle Output
+![Webpack Bundle Output](./public/BundleAnalyzer.png)
+
+#### Usage
+
+```bash
+ANALYZE=true npm run build
+# or
+ANALYZE=true yarn build
+# or
+ANALYZE=true pnpm build
+```
 
 ## Getting Started
 
