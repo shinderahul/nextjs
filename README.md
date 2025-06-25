@@ -74,6 +74,43 @@ ANALYZE=true yarn build
 ANALYZE=true pnpm build
 ```
 
+## 📈 Day 3 – Performance Optimization Summary
+
+Today was focused on improving performance and architecture hygiene in the Next.js App Router setup.
+
+### ✅ Implemented:
+
+- `dynamic()` + `Suspense` to lazy load heavy components like `ChartComponent`
+- Verified code-splitting via `next build` and Webpack Bundle Analyzer
+- Confirmed `ChartComponent` and charting libraries are loaded in a separate chunk
+
+### 📦 Bundle Optimization:
+
+- `main.js` was initially **346 KB**
+- Chart-related libraries are **not included** in the initial JS payload
+- Tailwind CSS tree-shaking enabled via correct `content` config in `tailwind.config.js`
+
+### ⚠️ Hydration Mismatch Fixed:
+
+- Issue caused by browser extensions (e.g., Grammarly, ColorZilla) adding unexpected attributes
+- Solved by testing in Incognito and adding `suppressHydrationWarning` to `<html>`
+- Confirmed clean hydration in dev and production
+
+### 🔥 Final Performance Outcome:
+
+- **Lighthouse Performance Score: 93**
+- Fast page load and time to interactive
+- Fully optimized build for real-world scale
+
+### 📝 Notes:
+
+- Avoid browser-specific calls (like `Date.now()`, `Math.random()`) in SSR code
+- Continue validating hydration by testing routes after every addition
+
+---
+
+📁 Path to production-ready, scalable, performance-first React apps is on track 🚀
+
 ## Getting Started
 
 First, run the development server:

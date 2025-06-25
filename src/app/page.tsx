@@ -8,6 +8,7 @@ import { Suspense, useState } from "react";
 
 const ChartComponent = dynamic(() => import("@/components/chartComponent"), {
   ssr: false,
+  loading: () => <Loader />,
 });
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -24,7 +25,9 @@ export default function Home() {
           height={38}
           priority
         />
-        <div>
+
+        {/* Navigation Links */}
+        <div className="flex items-center justify-center gap-2">
           <Link
             href="/ssg"
             className="px-4 py-2 rounded-lg bg-green-100 text-green-800 font-semibold hover:bg-green-200 transition"
@@ -40,6 +43,7 @@ export default function Home() {
           </Link>
         </div>
 
+        {/* Chart Section */}
         <div className="flex flex-col items-center justify-center w-full">
           {showMore ? (
             <Suspense fallback={<Loader />}>
@@ -48,15 +52,24 @@ export default function Home() {
           ) : (
             <button
               className="mt-4 px-4 py-2 text-black cursor-pointer rounded bg-gray-200 hover:bg-gray-300 transition"
-              onClick={() => setShowMore(!showMore)}
+              onClick={() => setShowMore(true)}
             >
               Show Chart
             </button>
           )}
+          {showMore && (
+            <button
+              className="mt-2 px-3 py-1 text-sm text-gray-700 rounded bg-gray-100 hover:bg-gray-200 transition"
+              onClick={() => setShowMore(false)}
+            >
+              Hide Chart
+            </button>
+          )}
         </div>
-
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+
+      {/* Footer */}
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <Link
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="/about"
@@ -85,21 +98,6 @@ export default function Home() {
           />
           Contact
         </Link>
-        {/* <Link
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </Link> */}
       </footer>
     </div>
   );
