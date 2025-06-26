@@ -111,16 +111,20 @@ Today was focused on improving performance and architecture hygiene in the Next.
 
 📁 Path to production-ready, scalable, performance-first React apps is on track 🚀
 
-## 🧩 Day 4 – Routing & Layout Architecture
+## 🧩 Day 4 – Route Grouping & Shared Layouts
 
-- Set up shared `layout.tsx` with persistent header/footer
-- Created common navigation components
-- Added `loading.tsx` and `not-found.tsx` to enhance UX
-- Built dynamic route `/products/[id]` with metadata
-- Verified working nested route structure
-- Implemented route grouping using `()`
+- Created clean shared layout using `layout.tsx`
+- Added `Header`, `Footer` as reusable common components
+- Grouped marketing routes using `(marketing)`:
+  - `/about`
+  - `/contact`
+- Grouped eCommerce routes using `(shop)`:
+  - `/products`
+  - `/products/[id]`
+- Added route-specific metadata and `loading.tsx` fallbacks
+- Ensured clean, scalable URL structure with no leakage from folder naming
 
-✅ Base structure now matches enterprise architecture patterns
+🧱 ArchitectKit now uses production-level route grouping, dynamic routing, and domain separation — ready for scale.
 
 ## Getting Started
 
