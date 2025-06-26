@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Your existing configuration
+  images: {
+    domains: ["fakestoreapi.com"],
+  },
 };
 
 // Only apply bundle analyzer if the module is available

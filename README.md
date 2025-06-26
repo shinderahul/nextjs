@@ -111,6 +111,17 @@ Today was focused on improving performance and architecture hygiene in the Next.
 
 📁 Path to production-ready, scalable, performance-first React apps is on track 🚀
 
+## 🧩 Day 4 – Routing & Layout Architecture
+
+- Set up shared `layout.tsx` with persistent header/footer
+- Created common navigation components
+- Added `loading.tsx` and `not-found.tsx` to enhance UX
+- Built dynamic route `/products/[id]` with metadata
+- Verified working nested route structure
+- Implemented route grouping using `()`
+
+✅ Base structure now matches enterprise architecture patterns
+
 ## Getting Started
 
 First, run the development server:
