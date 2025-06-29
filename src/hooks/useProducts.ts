@@ -2,15 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useDebounce } from "./useDebounce";
-
-interface Product {
-  id?: number;
-  title: string;
-  image: string;
-  description: string;
-  price: number;
-  category: string;
-}
+import { Product } from "@/type/produts";
 
 interface UseProductsOptions {
   category?: string;

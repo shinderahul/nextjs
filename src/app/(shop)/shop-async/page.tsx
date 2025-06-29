@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { useProducts } from "@/hooks/useProducts";
-import ProductCard from "@/app/(shop)/products/productCard";
+import ProductCard from "@/components/products/productCard";
 import Loader from "@/components/common/loader";
 import { useState } from "react";
 

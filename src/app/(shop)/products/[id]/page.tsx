@@ -1,5 +1,5 @@
 import NotFoundProduct from "@/app/(shop)/products/notFoundProduct";
-import ProductCard from "@/app/(shop)/products/productCard";
+import ProductCard from "@/components/products/productCard";
 import { getProduct } from "@/lib/api/products";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {

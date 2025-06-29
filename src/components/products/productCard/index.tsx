@@ -1,16 +1,8 @@
 "use client";
+import { ProductProps } from "@/type/produts";
 import Image from "next/image";
 
-export interface ProductProps {
-    product: {
-        id?: number;
-        title: string;
-        image: string;
-        description: string;
-        price: number;
-        category: string;
-    };
-}
+
 
 export default function ProductCard({ product: { title, image, description, price, category } }: ProductProps) {
 
