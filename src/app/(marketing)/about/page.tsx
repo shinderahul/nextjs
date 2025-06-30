@@ -1,12 +1,11 @@
-"use client";
-import Loader from "@/components/common/loader";
-import dynamic from "next/dynamic";
-import React from "react";
+import AboutContent from "@/components/aboutContent";
 
-const AboutContent = dynamic(() => import('@/components/aboutContent'), {
-    loading: () => <Loader />,
-    ssr: false,
-});
+export async function generateMetadata() {
+    return {
+        title: "About | ArchitectKit",
+        description: "Learn more about ArchitectKit, our mission, and the team behind it.",
+    };
+}
 
 export default function About() {
     return (

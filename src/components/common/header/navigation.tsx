@@ -12,11 +12,19 @@ const Navigation = () => {
                     className="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition"
                     onClick={() => setOpen((v) => !v)}
                     onBlur={() => setTimeout(() => setOpen(false), 100)}
+                    aria-haspopup="menu"
+                    aria-expanded={open}
+                    aria-controls="features-menu"
                 >
                     Features
                 </button>
                 {open && (
-                    <div className="absolute right-0 mt-2 w-52 text-white bg-gray-800 rounded shadow-lg z-10">
+                    <div
+                        id="features-menu"
+                        role="menu"
+                        aria-label="Features"
+                        className="absolute right-0 mt-2 w-52 text-white bg-gray-800 rounded shadow-lg z-10"
+                    >
                         <Link
                             href="/ssg"
                             className="block px-4 py-2 hover:bg-gray-700"

@@ -15,8 +15,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ArchitectKit",
-  description: "A performance-first, scalable Next.js architecture starter by Rahul Shinde",
+  title: "ArchitectKit - Elevate Your Frontend Game",
+  description: "Production-grade architecture using Next.js App Router with SSR, CSR, and a11y best practices.",
+  openGraph: {
+    title: "ArchitectKit - Elevate Your Frontend Game",
+    description: "Built with Next.js 15 App Router, featuring SSR, CSR fallback, accessibility, and SEO optimization.",
+    // url: "https://architectkit.vercel.app",
+    siteName: "ArchitectKit",
+    // images: [
+    //   {
+    //     url: "https://architectkit.vercel.app/og-image.png", // ✅ Make sure this image exists and is public
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "ArchitectKit Open Graph Preview",
+    //   },
+    // ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ArchitectKit - Elevate Your Frontend Game",
+    description: "Best practices with SSR, CSR, SEO, and a11y built in Next.js",
+    // images: ["https://architectkit.vercel.app/og-image.png"],
+  },
 };
 
 export default function RootLayout({
