@@ -1,5 +1,5 @@
 "use client";
-import { ProductProps } from "@/type/produts";
+import { ProductProps } from "@/types/products";
 import Image from "next/image";
 
 

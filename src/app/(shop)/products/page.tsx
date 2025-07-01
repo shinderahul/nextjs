@@ -1,6 +1,5 @@
 // app/(shop)/products/page.tsx
 import ProductGrid from "@/components/products/productGrid";
-import { getProductList } from "@/lib/api/productsList";
 
 export async function generateMetadata() {
     return {
@@ -9,7 +8,6 @@ export async function generateMetadata() {
     };
 }
 export default async function ProductsList() {
-    const products = await getProductList();
 
-    return <ProductGrid initialProducts={products} />;
+    return <ProductGrid />;
 }
