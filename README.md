@@ -126,6 +126,41 @@ Today was focused on improving performance and architecture hygiene in the Next.
 
 🧱 ArchitectKit now uses production-level route grouping, dynamic routing, and domain separation — ready for scale.
 
+:
+
+## 🧠 Global State Management with React Context
+
+To enhance scalability and separation of concerns, product data is managed via a global React Context using TypeScript.
+
+### 📁 Folder Structure
+
+```bash
+/context
+  └── products-context.tsx       # Provider for product state
+  └── products-types.ts          # TypeScript types
+
+/hooks
+  └── useProductContext.ts       # Custom hook for context access
+
+/types
+  └── product.ts                 # Shared Product type
+
+/app/(shop)/layout.tsx          # Wraps pages with <ProductProvider>
+```
+
+### 🔄 What It Manages
+
+Product list (fetched from API)
+Loading state
+Active category filter
+setCategory() to update filter
+
+### ✅ Benefits
+
+Shared state across SSR & CSR pages
+Easy to integrate filters/search
+Cleaner component logic (ProductGrid just consumes context)
+
 ## Getting Started
 
 First, run the development server:
