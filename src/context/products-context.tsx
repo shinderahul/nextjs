@@ -2,7 +2,7 @@
 
 import { createContext, useEffect, useState } from "react";
 import { Product } from "@/types/products";
-import { ProductContextType } from "./products-types";
+import { ProductContextType } from "@/types/products";
 
 export const ProductContext = createContext<ProductContextType | null>(null);
 
