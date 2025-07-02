@@ -2,15 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useDebounce } from "./useDebounce";
-import { Product } from "@/types/products";
-
-interface UseProductsOptions {
-  category?: string;
-  page?: number;
-  limit?: number;
-  sortBy?: "price_asc" | "price_desc" | "title_asc" | "title_desc";
-  search?: string;
-}
+import { Product, UseProductsOptions } from "@/types/products";
 
 export const useProducts = ({
   category = "all",

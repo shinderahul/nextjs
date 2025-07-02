@@ -1,44 +1,42 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
-import { useProducts } from "@/hooks/useProducts";
 import ProductCard from "@/components/products/productCard";
 import Loader from "@/components/common/loader";
-import { useState } from "react";
 import CategorySelect from "@/components/products/filters/categoryFilter";
 import SortSelect from "@/components/products/filters/sortByDropdown";
 import SearchInput from "@/components/products/filters/searchBox";
 import PaginationInfo from "@/components/products/filters/pagination";
+import { useProductContext } from "@/hooks/useProductContext";
 
 const categories = ["all", "electronics", "jewelery", "men's clothing", "women's clothing"];
 
 export default function ShopAsyncPage() {
-    const searchParams = useSearchParams();
-    const router = useRouter();
-
-    const [search, setSearch] = useState(searchParams.get("search") || "");
-    const category = searchParams.get("category") || "all";
-    const page = Number(searchParams.get("page") || 1);
-    const sort = searchParams.get("sort") as "price_asc" | "price_desc" | "title_asc" | "title_desc";
-
-    const { products, total, loading } = useProducts({
+    const {
         category,
-        page,
-        limit: 6,
-        sortBy: sort,
+        setCategory,
         search,
-    });
+        setSearch,
+        sort,
+        setSort,
+        page,
+        setPage,
+        products, total, loading
+    } = useProductContext();
+
 
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        router.push(`?category=${e.target.value}`);
+        setCategory(e.target.value);
+        setPage(1);
     };
 
     const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        router.push(`?category=${category}&sort=${e.target.value}`);
+        setSort(e.target.value);
+        setPage(1);
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
+        setPage(1);
     };
 
     return (

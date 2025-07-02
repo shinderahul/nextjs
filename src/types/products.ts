@@ -18,8 +18,15 @@ export interface UseProductsListOptions {
 export interface ProductContextType {
   products: Product[];
   loading: boolean;
+  total: number;
   category: string;
   setCategory: (category: string) => void;
+  search: string;
+  setSearch: (val: string) => void;
+  sort: string;
+  setSort: (val: string) => void;
+  page: number;
+  setPage: (val: number) => void;
 }
 
 export interface CategorySelectProps {
@@ -47,4 +54,19 @@ export interface PaginationInfoProps {
   limit: number;
   total: number;
   className?: string;
+}
+
+export type sortByOptions =
+  | "price_asc"
+  | "price_desc"
+  | "title_asc"
+  | "title_desc"
+  | "";
+
+export interface UseProductsOptions {
+  category?: string;
+  page?: number;
+  limit?: number;
+  sortBy?: sortByOptions;
+  search?: string;
 }
