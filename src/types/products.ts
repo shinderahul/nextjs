@@ -27,6 +27,10 @@ export interface ProductContextType {
   setSort: (val: string) => void;
   page: number;
   setPage: (val: number) => void;
+  totalPages: number;
+  goToNextPage: () => void;
+  goToPrevPage: () => void;
+  goToPage: (p: number) => void;
 }
 
 export interface CategorySelectProps {

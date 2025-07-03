@@ -7,6 +7,8 @@ import SortSelect from "@/components/products/filters/sortByDropdown";
 import SearchInput from "@/components/products/filters/searchBox";
 import PaginationInfo from "@/components/products/filters/pagination";
 import { useProductContext } from "@/hooks/useProductContext";
+import ResetFilters from "@/components/products/filters/resetFilters";
+import ActiveFilters from "@/components/products/filters/activeFilters";
 
 const categories = ["all", "electronics", "jewelery", "men's clothing", "women's clothing"];
 
@@ -55,10 +57,11 @@ export default function ShopAsyncPage() {
                     onChange={handleSearchChange}
                     placeholder="Search title"
                 />
+                <ResetFilters />
             </div>
 
             {loading && <Loader />}
-
+            <ActiveFilters />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {products?.map((product) => (
                     <ProductCard key={product.id} product={product} />

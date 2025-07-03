@@ -15,7 +15,6 @@ export const ProductProvider = ({ children }: { children: React.ReactNode }) => 
     const [sort, setSort] = useState<string>("");
     const [page, setPage] = useState<number>(1);
 
-
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
     const limit = 6;
@@ -60,12 +59,13 @@ export const ProductProvider = ({ children }: { children: React.ReactNode }) => 
                     });
                 }
 
+                setProducts(processed); // all filtered products
+
                 // Pagination
                 const start = (page - 1) * limit;
                 const end = start + limit;
                 const paginated = processed.slice(start, end);
 
-                setProducts(processed); // all filtered products
                 setFilteredProducts(paginated); // paginated view
                 setLoading(false);
             } catch (err) {
@@ -76,6 +76,13 @@ export const ProductProvider = ({ children }: { children: React.ReactNode }) => 
 
         fetchProducts();
     }, [category, page, limit, sort, debouncedSearch]);
+
+    // Pagination helpers
+    const totalPages = Math.ceil(products.length / limit);
+
+    const goToNextPage = () => setPage((prev) => Math.min(prev + 1, totalPages));
+    const goToPrevPage = () => setPage((prev) => Math.max(prev - 1, 1));
+    const goToPage = (p: number) => setPage(Math.max(1, Math.min(p, totalPages)));
 
     return (
         <ProductContext.Provider
@@ -91,6 +98,10 @@ export const ProductProvider = ({ children }: { children: React.ReactNode }) => 
                 page,
                 setPage,
                 total: products.length,
+                totalPages,
+                goToNextPage,
+                goToPrevPage,
+                goToPage,
             }}
         >
             {children}
