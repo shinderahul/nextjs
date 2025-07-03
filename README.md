@@ -161,6 +161,48 @@ Shared state across SSR & CSR pages
 Easy to integrate filters/search
 Cleaner component logic (ProductGrid just consumes context)
 
+### 🎯 Advanced Product Filtering System
+
+The project now includes a production-grade product listing and filtering architecture:
+
+## ✅ Key Features
+
+Category Filtering: Dynamically filter products by category from the FakeStore API.
+
+Search: Implements useDebounce to optimize keyword search performance.
+
+Sorting: Toggle between price and title sorting (asc/desc).
+
+Pagination: Custom-built pagination component with controlled state.
+
+State Management: Powered by React Context API with a clean separation of logic/UI.
+
+Reset Filters: One-click reset to default filter state.
+
+Active Filter Tags: Shows current filter status for better UX.
+
+Client-side and Server-side Integration: Products are fetched server-side and hydrated client-side using hooks like useProductsList.
+
+```bash
+context/
+  └── ProductContextProvider.tsx   // Global state for filters and pagination
+
+hooks/
+  └── useProductsList.ts           // Hydrates product list from SSR
+  └── useDebounce.ts               // Optimized debounced search
+
+components/
+  ├── filters/
+  │   ├── searchBox.tsx
+  │   ├── categoryFilter.tsx
+  │   ├── sortByDropdown.tsx
+  │   ├── pagination.tsx
+  │   └── resetFilters.tsx
+  └── ProductCard.tsx
+  └── ProductGrid.tsx
+
+```
+
 ## Getting Started
 
 First, run the development server:
