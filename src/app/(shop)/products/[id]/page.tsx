@@ -2,21 +2,24 @@ import NotFoundProduct from "@/app/(shop)/products/notFoundProduct";
 import ProductCard from "@/components/products/productCard";
 import { getProduct } from "@/lib/api/products";
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-    if (params?.id) {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+    const resolvedParams = await params;
+
+    if (resolvedParams?.id) {
         return {
-            title: `Product - ${params.id}`,
-            description: `Details for product ${params.id}`,
+            title: `Product - ${resolvedParams.id}`,
+            description: `Details for product ${resolvedParams.id}`,
         };
     }
 }
 
 interface ProductProps {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
 export default async function Product({ params }: ProductProps) {
-    const product = await getProduct(params.id);
+    const resolvedParams = await params;
+    const product = await getProduct(resolvedParams.id);
 
     if (!product || !product.id) {
         return <NotFoundProduct />;
