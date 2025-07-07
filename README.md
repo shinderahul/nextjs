@@ -203,6 +203,22 @@ components/
 
 ```
 
+### Component Design Patterns
+
+Implemented scalable component architecture with:
+
+```
+✅ Presentational + Container Components
+
+✅ Compound Component Pattern (Tabs implementation)
+
+✅ Controlled vs Uncontrolled Inputs
+
+✅ Prop Getters Pattern for enhanced reusability and a11y
+```
+
+These patterns promote flexibility, reusability, and separation of concerns — all traits of architect-level React code.
+
 ## Getting Started
 
 First, run the development server:
