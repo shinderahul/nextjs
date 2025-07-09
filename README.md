@@ -219,6 +219,30 @@ Implemented scalable component architecture with:
 
 These patterns promote flexibility, reusability, and separation of concerns — all traits of architect-level React code.
 
+### This day focused on establishing a strong foundation for testing React/Next.js apps using Vitest and React Testing Library.
+
+## 🔧 What’s Implemented:
+
+Unit tests for components like:
+
+✅ SearchInput
+
+✅ CategoryFilter
+
+✅ Custom hook testing for useProducts using mocked fetch
+
+✅ Snapshot testing for basic UI render checks
+
+## 🧠 Testing Pyramid (Documented)
+
+Unit Tests → Smallest testable parts (components, hooks)
+
+Integration Tests → How parts work together (e.g., forms + validation)
+
+E2E Tests → Simulate real user flows (not yet implemented)
+
+Prioritize unit and integration tests for fast, reliable feedback loops.
+
 ## Getting Started
 
 First, run the development server:
