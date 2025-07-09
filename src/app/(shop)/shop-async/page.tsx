@@ -4,7 +4,7 @@ import ProductCard from "@/components/products/productCard";
 import Loader from "@/components/common/loader";
 import CategorySelect from "@/components/products/filters/categoryFilter";
 import SortSelect from "@/components/products/filters/sortByDropdown";
-import SearchInput from "@/components/products/filters/searchBox";
+import SearchInput from "@/components/products/filters/searchInput";
 import PaginationInfo from "@/components/products/filters/pagination";
 import { useProductContext } from "@/hooks/useProductContext";
 import ResetFilters from "@/components/products/filters/resetFilters";
